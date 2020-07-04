@@ -5,41 +5,49 @@
                 <div class="budget-header__title">
                     <h1 class="title">Orçamentos</h1>
                 </div>
-                <div>
-                    <form @submit.prevent="filter" class="budget-header__form">
-                        <div class="form-group">
-                            <label for="company">Empresa</label>
-                            <select name="company" class="form-control">
-                                <option value="">Selecione</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Status</label>
-                            <select name="company" class="form-control">
-                                <option value="">Selecione</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Versão</label>
-                            <select name="company" class="form-control">
-                                <option value="">Selecione</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Busca</label>
-                            <input type="text" class="form-control" name="search" />
-                        </div>
-
-                        <div>
-                            <button type="reset" class="btn btn-default">Limpar</button>
-                            <button type="submit" class="btn btn-primary">Buscar</button>
-                        </div>
-                    </form>
-                </div>
             </header>
+
+            <div>
+                <form @submit.prevent="filter" class="budget-header__form">
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <select name="company" class="form-control">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Status</label>
+                        <select name="company" class="form-control">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Etapas</label>
+                        <select name="company" class="form-control">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Projetos</label>
+                        <select name="company" class="form-control">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Busca</label>
+                        <input type="text" class="form-control" name="search" />
+                    </div>
+
+                    <div>
+                        <button type="reset" class="btn btn-default">Limpar</button>
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </form>
+            </div>
 
             <b-table
                     striped
@@ -106,6 +114,11 @@
                         sortable: true
                     },
                     {
+                        key: 'etapas',
+                        label: 'Etapas',
+                        sortable: true
+                    },
+                    {
                         key: 'budget_status_desc',
                         label: 'Status',
                         class: 'text-center',
@@ -153,6 +166,7 @@
     .budget-header{
         display: flex;
         align-items: center;
+        margin-bottom: 20px;
     }
 
     .budget-header__title{

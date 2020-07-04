@@ -77,20 +77,6 @@
                         </tr>
                         <tr class="table-danger">
                             <td>
-                                <strong>Operação (+)</strong>
-                            </td>
-                            <td>
-                                {{ item.percents.operation | percentage }}
-                            </td>
-                            <td align="right">
-                                {{ item.totalOperationBRL | currencyReal }}
-                            </td>
-                            <td align="right">
-                                {{ item.totalOperationUSD | currencyUsd }}
-                            </td>
-                        </tr>
-                        <tr class="table-danger">
-                            <td>
                                 <strong>Overhead (+)</strong>
                             </td>
                             <td>
@@ -101,6 +87,34 @@
                             </td>
                             <td align="right">
                                 {{ item.totalOverheadUSD | currencyUsd }}
+                            </td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td>
+                                <strong>Planejamento e Criação (+)</strong>
+                            </td>
+                            <td>
+                                {{ 0 | percentage }}
+                            </td>
+                            <td align="right">
+                                {{ 0 | currencyReal }}
+                            </td>
+                            <td align="right">
+                                {{ 0 | currencyUsd }}
+                            </td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td>
+                                <strong>Margem (+)</strong>
+                            </td>
+                            <td>
+                                {{ item.percents.operation | percentage }}
+                            </td>
+                            <td align="right">
+                                {{ item.totalOperationBRL | currencyReal }}
+                            </td>
+                            <td align="right">
+                                {{ item.totalOperationUSD | currencyUsd }}
                             </td>
                         </tr>
                         <tr class="table-danger">
@@ -292,5 +306,10 @@
 
     .budget-header__total{
         flex: 1;
+
+        table {
+            max-width: 650px;
+            float: right;
+        }
     }
 </style>
