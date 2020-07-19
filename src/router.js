@@ -25,7 +25,7 @@ const router = new VueRouter({
                 requiresAuth: true,
             },
             redirect: {
-                name: 'project',
+                name: 'projects',
             },
         },
     ],
@@ -45,7 +45,7 @@ router.beforeEach((to, from, next) => {
     }
 
     if (isAuth && to.name === 'login') {
-        return next({ name: 'project' });
+        return next({ name: 'projects' });
     }
 
     return next();

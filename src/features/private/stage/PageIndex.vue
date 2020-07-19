@@ -4,11 +4,11 @@
             <header class="box-header">
                 <div class="box-header__title">
                     <h1 class="title">
-                        Projetos
+                        Etapas
                     </h1>
                     <router-link
                             :to="{
-                                name: 'project-form',
+                                name: 'stage-form',
                             }"
                             class="btn btn-success btn-sm">
                         Adicionar
@@ -22,9 +22,9 @@
                     selectable
                     sticky-header
                     select-mode="single"
-                    @row-selected="openBudget"
                     :items="projects2"
                     :fields="fields"
+                    @row-selected="openBudget"
                     :busy="loading">
                 <template v-slot:table-busy>
                     <div class="text-center text-danger my-2">
@@ -41,12 +41,11 @@
                             :to="{
                                 name: 'project-form',
                                 params: {
-                                    id: data.item.project_group_id
+                                    id: data.id
                                 }
                             }"
                             class="btn btn-primary btn-sm">
                         <b-icon icon="pencil"></b-icon>
-
                     </router-link>
                     <button class="btn btn-danger btn-sm">
                         <b-icon icon="trash"></b-icon>
@@ -61,15 +60,15 @@
 <script>
     import { createNamespacedHelpers } from 'vuex';
 
-    const { mapActions, mapState } = createNamespacedHelpers('project');
+    const { mapActions, mapState } = createNamespacedHelpers('stage');
 
     export default {
-        name: 'page-project',
+        name: 'page-stage',
         data() {
             return {
                 fields: [
                     {
-                        key: 'project_group_code',
+                        key: 'project_group_id',
                         label: 'Código',
                         sortable: true,
                         class: 'text-center',
@@ -82,7 +81,7 @@
                     },
                     {
                         key: 'Stages',
-                        label: 'Orçamentos',
+                        label: 'Etapas',
                         sortable: true
                     },
                     {
@@ -108,19 +107,16 @@
         computed: {
             ...mapState([
                 'loading',
-                'projects2',
+                'itens',
             ]),
         },
         methods: {
             ...mapActions([
-                'getProjects2',
+                'getItens',
             ]),
-            openBudget(data) {
-                this.$router.push({ name: 'budget', params: { id: data[0].project_group_id }});
-            },
         },
         created() {
-            return this.getProjects2();
+            return this.getItens();
         }
     }
 </script>

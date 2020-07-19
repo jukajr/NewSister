@@ -8,4 +8,7 @@ export default {
     setAccounts(state, accounts) {
         state.accounts = accounts;
     },
+    setBudgets(state, budgets) {
+        state.budgets = budgets;
+    },
 };

@@ -1,16 +1,16 @@
 import * as children from './pages/routes.js'; //eslint-disable-line
 // const PageBudgetDetail = () => import('./PageBudgetDetail');
-const PageProject = () => import('./PageProject');
+const PageIndex = () => import('./PageIndex');
 
 export default {
-    path: 'projects',
+    path: 'crud',
     children: {
-        projects: {
+        crud: {
             path: '',
-            name: 'projects',
-            component: PageProject,
+            name: 'crud',
+            component: PageIndex,
             meta: {
-                title: 'Projetos',
+                title: 'INDEX',
             },
         },
         ...children,

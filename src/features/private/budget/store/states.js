@@ -1,6 +1,7 @@
 export default {
     loading: false,
     accounts: [],
+    budgets: [],
     item: {
         percents: {
             operation: 0,

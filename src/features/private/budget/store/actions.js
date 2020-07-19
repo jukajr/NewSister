@@ -1,55 +1,48 @@
 import { Http } from '../../../../providers';
 
 export default {
-    getBudget({ commit }, id) {//eslint-disable-line
+    getProjectById({ commit }, id) {
+        commit('toggleLoading', true);
+        return Http.request({
+            baseURL: 'http://52.146.43.37:5000',
+            url: `project/${id}`,
+            method: 'GET',
+        }).finally(() => commit('toggleLoading', false));
+    },
+    getBudgets({ commit }, id) {//eslint-disable-line
         commit('toggleLoading', true);
 
         return Http.request({
-            // url: `budget/${id}`,
-            url: 'budget',
+            baseURL: 'http://52.146.43.37:5000',
+            url: `budget/${id}`,
         })
-            .then(item => commit('setItem', item))
             .finally(() => commit('toggleLoading', false));
     },
-    getParentAccounts({ commit }) {
+    getVersions({ commit }, id) {
+        commit('toggleLoading', true);
+
         return Http.request({
-            url: 'parentAccounts',
+            baseURL: 'http://52.146.43.37:5000',
+            url: `budgetdraftversion/${id}`,
         })
-            .then(accounts => commit('setAccounts', accounts));
+            .finally(() => commit('toggleLoading', false));
     },
-    getBudgetAccount(budget_id, account_id) {//eslint-disable-line
+    getBudgetdraft({ commit }, { id, version }) {
+        commit('toggleLoading', true);
+
         return Http.request({
-            url: 'budget/item',
-            // url: `budget/${budget_id}/account/${account_id}`,
-        });
+            baseURL: 'http://52.146.43.37:5000',
+            url: `budgetdraft/${id}/${version}`,
+        })
+            .finally(() => commit('toggleLoading', false));
     },
-    updateBudgetAccount(body) {
-        // const {
-        //     id: account_id,
-        // } = body;
+    getBudgetdraftheader({ commit }, { id, version }) {
+        commit('toggleLoading', true);
+
         return Http.request({
-            // url: `budget/${budget_id}/account/${account_id}`,
-            url: 'budget/item',
-            method: 'PUT',
-            body,
-        });
-    },
-    createBudgetAccount(body) {
-        // const {
-        //     budget_id,
-        // } = body;
-        return Http.request({
-            // url: `budget/${budget_id}`,
-            url: 'budget',
-            method: 'POST',
-            body,
-        });
-    },
-    deleteBudgetAccount(budget_id, id) {//eslint-disable-line
-        return Http.request({
-            // url: `budget/${budget_id}/account/${id}`,
-            url: 'budget/item',
-            method: 'DELETE',
-        });
-    },
+            baseURL: 'http://52.146.43.37:5000',
+            url: `budgetdraftheader/${id}/${version}`,
+        })
+            .finally(() => commit('toggleLoading', false));
+    }
 };
